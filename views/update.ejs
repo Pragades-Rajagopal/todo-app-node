@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+<div class="container">
+    <h2 class="mt-5 mb-3">Update task</h2>
+    <form action="/task/update/<%= task.Task_Id %>" method="post">
+        <div class="mb-3">
+            <label for="inputTask">Task:</label>
+            <input autofocus type="text" class="form-control shadow-none mb-3" id="inputTask" name="Task" value="<%= task.Task %>">
+            <% if (errors.Task) { %>
+                <div class="text-danger mb-3"><%= errors.Task.msg %></div>
+            <% } %>
+            <label for="inputDescr">Description</label>
+            <textarea autofocus class="form-control shadow-none mb-3" id="inputDescr" name="Descr" placeholder="Enter the task description"><%= task.Descr %></textarea>
+            <% if (errors.Descr) { %>
+                <div class="text-danger mb-3"><%= errors.Descr.msg %></div>
+            <% } %>
+            <label for="inputStatus">Status:</label>
+            <select class="form-select shadow-none" id="inputStatus" name="Status">
+                <!-- <option value="Assigned">Assigned</option> -->
+                <option value="In progress">In progress</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a class="btn btn-outline-dark cancel" href="/">Cancel</a>
+    </form>
+</div>
+
+<%- include('footer') %>

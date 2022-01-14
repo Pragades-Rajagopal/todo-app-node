@@ -1,0 +1,30 @@
+<%- include('header') %> 
+
+<div class="container">
+  <h2 class="mt-5 mb-3">To Do List</h2>
+  <table class="table" style="table-layout: fixed; max-width: 125%;">
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col">Status</th>
+        <th class="d-print-none">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const task of tasks) { %>
+      <tr>
+        <td><%= task.Task %></td>
+        <td class="status"><%= task.Status %></td>
+        <td class="d-print-none">
+          <a class="btn btn-sm btn-warning" href="/task/update/<%= task.Task_Id %>">Update</a>
+          <a class="btn btn-sm btn-danger" href="/task/delete/<%= task.Task_Id %>">Delete</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('footer') %> 
